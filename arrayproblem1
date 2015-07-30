@@ -1,0 +1,11 @@
+given that array is defined as int array[100][50][25]
+translate the following line of C to assembly code: X = Array[I][J][K]
+
+array is stored in ESI 
+X is EDI
+I is in EAX
+J is in EBX
+K is in ECX
+
+
+
