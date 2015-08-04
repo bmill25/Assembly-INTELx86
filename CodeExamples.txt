@@ -1,0 +1,53 @@
+In this line of code,
+
+movl x, (%eax)
+
+two operands are in memory, but instructions only support 1. 
+
+
+1. movl x, %ebx
+2. movl %ebx, (%eax) 
+
+Here is an array is defined as int array[100][50][25]
+X=Array[I][J][K]
+Array is stored in ESI
+X is EDI
+I is stored in EAX
+J is stored in EBX
+K is stored in ECX
+We assume that all registers besides the ones mentioned are available to use. 
+That I,J,K and Array are not needed after this line completes. 
+
+#first calculate I displacement
+Imull $50 
+Imull $25
+
+movl %eax, %edi
+
+#then calculate J displacement
+movl %ebx %eax
+Imull $25
+addl %eax, %edi
+
+#then calculate K displacement
+addl %ecx, %edi
+
+#finally assign X the value
+movl(%esi, %edi, 4), %edi
+
+
+We have an array defined: int** array 
+we will translate the following line of C to assembly code: X = Array[I][J][K]
+Assuming the following:
+    Array is stored in ESI
+    X is EDI
+    I is stored in EAX
+    J is stored in EBX
+    K is stored in ECX
+    All registers besides the ones mentioned are available to use.
+    I, J, K and Array are not needed after this line completes.
+
+movl(%esi, %eax, 4), %esi
+movl(%esi, %ebx, 4), %esi
+movl(%esi, %ecx, 4), %edi
+

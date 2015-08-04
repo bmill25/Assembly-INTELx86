@@ -1,0 +1,2 @@
+On a little endian machine the least significant byte of a word appears at the lowest address but on a big endian machine the most significant byte of a word appears at the lowest address.
+

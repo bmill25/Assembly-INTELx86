@@ -1,0 +1,6 @@
+I/O mapped I/O and Memory Mapped I/O
+
+I/O mapped memory we partition the I/O and memory address space into two separate spaces. The hardware has to support additional instructions so as to disambiguate whether we are writing to an I/O device or memory. Intel uses I/O mapped approach.
+
+In memory mapped I/O there is 1 unified address space for both memory and I/O devies but we reserve certain addresses for I/O devices. The remaining addresses are used for memory
+
